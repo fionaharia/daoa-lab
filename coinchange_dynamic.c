@@ -6,7 +6,7 @@ int main()
   int d[10] = {1,4,6};
   int n=3;
   int N = 8;
-  int dp[10][10];
+  int dp[n+1][N+1];
 
   printf("Table: \n");
   for(i=0;i<=n;i++) //iterates through the coins
@@ -43,11 +43,7 @@ int main()
   {
     for (j = 0; j <= N; j++) 
     {
-      printf("%d", dp[i][j]);
-      if (j != N) 
-      {
-        printf(" ");
-      }
+      printf("%d ", dp[i][j]);
     }
     printf("\n");
   }
@@ -58,7 +54,7 @@ int main()
   while(j>0 && i>0)
   {
     if(dp[i][j] == dp[i-1][j])
-      i--;
+      i--; //inherited from prev row
     else
     {
       printf("%d ,",d[i-1]);

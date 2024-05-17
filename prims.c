@@ -34,7 +34,7 @@ void prims(int G[V][V]) {
     parent[0] = -1; // parent of zero vertex is -1
 
     for (int i = 0; i < V - 1; i++) {
-        int u = minkey(key, set); // find closest vertex
+        int u = minkey(key, set); // finds the minimum key that has not been included yet
         set[u] = 1; // set visited to 1
 
         for (int j = 0; j < V; j++) { // for connected vertex of u

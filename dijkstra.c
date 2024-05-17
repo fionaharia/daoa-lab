@@ -32,7 +32,7 @@ int main()
     int u=-1;
     
     for(j=0;j<V;j++) //finding the minimum distance to vertex u
-      if(!visited[j] && (u==-1 || dist[i] < dist[u]))
+      if(!visited[j] && (u==-1 || dist[j] < dist[u]))
         u=j; //updating the minimum dist to u
     
     visited[u] = true;

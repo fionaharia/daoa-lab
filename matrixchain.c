@@ -63,6 +63,5 @@ int main() {
     printf("\nOptimal Parenthesization: ");
     printOptimalParens(s, 1, n - 1);
     printf("\n");
-
     return 0;
 }

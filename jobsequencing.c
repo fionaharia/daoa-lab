@@ -36,10 +36,10 @@ void scheduleJobs(int n,int jobs[],int deadlines[],int profits[])
       maxdeadline = deadlines[i];
   }
 
-  int jobsaccepted[maxdeadline];
+  int jobsaccepted[maxdeadline + 1];
 
   //initalising all jobs to -1
-  for(i=0;i<maxdeadline;i++)
+  for(i=0;i<=maxdeadline;i++)
   {
     jobsaccepted[i] = -1;
   }
@@ -49,7 +49,7 @@ void scheduleJobs(int n,int jobs[],int deadlines[],int profits[])
     // this loop is to check the jobsaccepted array
     for(j=deadlines[i]-1;j>=0;j--)
     {
-      if(jobsaccepted[i]==-1)
+      if(jobsaccepted[j]==-1)
       {
         jobsaccepted[j] = jobs[i];
         maxProfit += profits[i];
@@ -58,30 +58,31 @@ void scheduleJobs(int n,int jobs[],int deadlines[],int profits[])
     }
   }
 
-  printf("Jobs accepted in the order are: \n");
-  for(i=0;i<maxdeadline;i++)
+  printf("\nJobs accepted in the order are: \n");
+  for(i=0;i<=maxdeadline;i++)
   {
-    printf("%d \n",jobsaccepted[i]);
+    if(jobsaccepted[i] != -1)
+      printf("J%d, ",jobsaccepted[i]);
   }
-  printf("Maximum Profit: %d\n",maxProfit);
+  printf("\nMaximum Profit: %d\n",maxProfit);
 }
 
 int main()
 {
   int i, n;
   printf("Enter no. of Jobs: ");
-     scanf("%d", &n);
-     int jobs[n], deadlines[n], profits[n];
-     for(i = 0 ; i < n ; i++) jobs[i] = i+1;
-     printf("Enter Deadlines: ");
-     for(i = 0 ; i < n ; i++) scanf("%d", &deadlines[i]);
-     printf("Enter Profits: ");
-     for(i = 0 ; i < n ; i++) scanf("%d", &profits[i]);
-     sortBasedonProfits(n, jobs, deadlines, profits);
-     for(i = 0 ; i < n ; i++){
-          printf("%d %d %d\n", jobs[i], profits[i], deadlines[i]);
-     }
-     scheduleJobs(n, jobs, deadlines, profits);
+  scanf("%d", &n);
+  int jobs[n], deadlines[n], profits[n];
+  for(i = 0 ; i < n ; i++) jobs[i] = i+1;
+  printf("Enter Deadlines: ");
+  for(i = 0 ; i < n ; i++) scanf("%d", &deadlines[i]);
+  printf("Enter Profits: ");
+  for(i = 0 ; i < n ; i++) scanf("%d", &profits[i]);
+  sortBasedonProfits(n, jobs, deadlines, profits);
+  printf("\nJobs\tProfits\tDeadlines\n");
+  for(i = 0 ; i < n ; i++){
+       printf("%d\t%d\t%d\n", jobs[i], profits[i], deadlines[i]);
+  }
+  scheduleJobs(n, jobs, deadlines, profits);
+  return 0;
 }
-
-
